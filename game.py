@@ -240,9 +240,10 @@ def battleTime(player, enemy):
 def gainExperience(player, enemy):
     player.exp += enemy.exp
     if player.exp >= 100:
-        print('You leveled up and restored your health\n')
+        print('You leveled up, gained 5 health, and restored your health\n')
         player.level += 1
         player.exp -= 100
+        player.maxhp += 5
         player.hp = player.maxhp
     if player.level == 5:
         print('CONGRATULATIONS!!!')
