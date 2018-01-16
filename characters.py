@@ -1,4 +1,4 @@
-
+# Character parent class
 class Character(object):
     def __init__(self, name, hp, str):
         self.name = name
@@ -6,6 +6,7 @@ class Character(object):
         self.str = str
         self.dead = False
 
+    # Character class method for attacks(player & enemy)
     def attack(self, other):
         other.hp -= self.str
         if other.hp < 0:

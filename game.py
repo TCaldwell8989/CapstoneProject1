@@ -4,6 +4,9 @@
 # Designed By Tyler Caldwell #
 ##############################
 
+# Referenced the youtube video below to help me get started
+# https://www.youtube.com/watch?v=6TKcVg7OXVg
+
 from enemies import *
 from player import *
 from heroes import *
@@ -226,6 +229,7 @@ def battleTime(player, enemy):
             gainExperience(player, enemy)
             return True
 
+# Function that handles leveling up a character with enemy exp
 def gainExperience(player, enemy):
     player.exp += enemy.exp
     if player.exp >= 100:
@@ -242,12 +246,11 @@ def gainExperience(player, enemy):
             sys.exit(0)
 
 
-
-
-
 #################################
 # VALIDATION and ERROR HANDLING #
 #################################
+
+# character selection validation and exception handling
 def characterValidation():
     try:
         choice = int(input('\nSelect Character [Enter 1 - 3]: \n'))
@@ -259,6 +262,7 @@ def characterValidation():
         print('Oops, Enter 1 for Knight, 2 for Mage, and 3 for Healer')
         characterValidation()
 
+# user action validation and exception handling
 def actionValidation(userAction):
     try:
         for act in actions:
