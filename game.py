@@ -219,10 +219,12 @@ def battleTime(player, enemy):
                 print('You sapped 1 health from {}\n'.format(enemy.name))
                 player.hp += 1
                 enemy.hp -= 1
+                maxHP(player)
             elif healChance <= 25:
                 print('You sapped 2 health from {}\n'.format(enemy.name))
                 player.hp += 2
                 enemy.hp -= 2
+                maxHP(player)
         elif player.title == '{} the Mage'.format(player.name):
             spellChance = random.randint(1,100)
             if spellChance >= 75:
@@ -252,6 +254,10 @@ def gainExperience(player, enemy):
         with open('wins_losses', 'a') as f:
             f.write('{:15}: level {} - WIN\n'.format(player.title, player.level))
             sys.exit(0)
+
+def maxHP(player):
+    if  player.hp > player.maxhp:
+        player.hp = player.maxhp
 
 
 #################################
