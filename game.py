@@ -36,7 +36,7 @@ def main():
         # Print the rules of the game for the user
         print('\n***** {} *****'.format(player.title))
         print('Good Luck, Get to Level 5 and Escape the Dungeon')
-        print('There are 3 enemies lurking about')
+        print('There are enemies lurking about')
         print('Gain experience by lowering their health to 0')
         print('You lose if you run out of health before level 5\n')
 
@@ -215,15 +215,23 @@ def battleTime(player, enemy):
         player.attack(enemy)
         if player.title == '{} the Healer'.format(player.name):
             healChance = random.randint(1,100)
-            if healChance >= 50:
+            print(healChance)
+            if healChance >= 75:
                 print('You sapped 1 health from {}\n'.format(enemy.name))
                 player.hp += 1
                 enemy.hp -= 1
+            elif healChance <= 25:
+                print('You sapped 2 health from {}\n'.format(enemy.name))
+                player.hp += 2
+                enemy.hp -= 2
         elif player.title == '{} the Mage'.format(player.name):
             spellChance = random.randint(1,100)
-            if spellChance >= 50:
+            if spellChance >= 75:
                 print('Your spell was strong and did 1 extra damage\n')
                 enemy.hp -= 1
+            elif spellChance <= 25:
+                print('Your spell was a critical hit and did 2 extra damage\n')
+                enemy.hp -= 2
         if enemy.hp <= 0:
             print('Defeated the {}\n'.format(enemy.name))
             gainExperience(player, enemy)

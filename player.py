@@ -2,7 +2,7 @@
 import sys
 
 from heroes import *
-# Player class inheriting from the Player class
+# Player class inheriting from the Hero class
 class Player(Hero):
     def __init__(self, name, hp, str, mag):
         Hero.__init__(self, name, hp, str, mag)
