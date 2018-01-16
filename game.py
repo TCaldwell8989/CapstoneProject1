@@ -13,6 +13,7 @@ from heroes import *
 
 import sys
 import random
+import time
 
 # Dictionary containing the actions a user can do on their turn
 actions = { 1 : 'search', 2 : 'camp', 3 : 'stats', 4 : 'help', 5 : 'exit'}
@@ -178,10 +179,12 @@ def enemyTurn(player):
     print('################')
     print('# Enemies TURN #')
     print('################\n')
+    time.sleep(1)
     enemyList = badCharacters()
     attackProbability = random.randint(1,100)
     if attackProbability >= 75:
         print("Enemy has spotted you! Prepare for battle\n")
+        time.sleep(1)
         endTurn = False
         while endTurn == False:
             if player.level == 1:
@@ -201,6 +204,7 @@ def enemyTurn(player):
         print('You managed to escape detection\n')
         if player.hp < player.maxhp:
             print('You regained 1 health point\n')
+            time.sleep(1)
             player.hp += 1
     player.update()
 
@@ -209,10 +213,12 @@ def battleTime(player, enemy):
     while player.hp > 0:
         print('{} attacks you for {} damage'.format(enemy.name, enemy.str))
         enemy.attack(player)
+        time.sleep(2)
         if player.hp <= 0:
             return False
         print('{} attacks {} for {} damage'.format(player.title, enemy.name, player.str))
         player.attack(enemy)
+        time.sleep(2)
         if player.title == '{} the Healer'.format(player.name):
             healChance = random.randint(1,100)
             if healChance >= 75:
