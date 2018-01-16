@@ -215,7 +215,6 @@ def battleTime(player, enemy):
         player.attack(enemy)
         if player.title == '{} the Healer'.format(player.name):
             healChance = random.randint(1,100)
-            print(healChance)
             if healChance >= 75:
                 print('You sapped 1 health from {}\n'.format(enemy.name))
                 player.hp += 1
